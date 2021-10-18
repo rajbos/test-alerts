@@ -8,8 +8,8 @@ env:
   BUILDPLATFORM: any cpu
   SYSTEM.DEBUG: 'false'
 jobs:
-  Job_1:
-    name: Agent job 1
+  build:
+    name: build
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -26,9 +26,17 @@ jobs:
     - name: Build
       shell: bash
       run: shopt -s globstar; for f in ./**/*.csproj; do dotnet build $f --configuration ${{ env.BUILDCONFIGURATION }} ; done
+  test:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
     - name: Test
       shell: bash
       run: shopt -s globstar; for f in ./**/*.csproj; do dotnet test $f --configuration ${{ env.BUILDCONFIGURATION }} ; done
+  publish:
+    runs-on: ubuntu-20.04
+    needs: test
+    steps:
     - name: Publish
       shell: bash
       run: shopt -s globstar; for f in ./**/*.csproj; do dotnet publish $f --configuration ${{ env.BUILDCONFIGURATION }} --output ${{ runner.temp }} ; done
