@@ -30,6 +30,11 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build
     steps:
+    - uses: actions/checkout@v2
+    - name: Use Node 10.16.3
+      uses: actions/setup-node@v2
+      with:
+        node-version: 10.16.3
     - name: Test
       shell: bash
       run: shopt -s globstar; for f in ./**/*.csproj; do dotnet test $f --configuration ${{ env.BUILDCONFIGURATION }} ; done
@@ -37,6 +42,11 @@ jobs:
     runs-on: ubuntu-20.04
     needs: test
     steps:
+    - uses: actions/checkout@v2
+    - name: Use Node 10.16.3
+      uses: actions/setup-node@v2
+      with:
+        node-version: 10.16.3
     - name: Publish
       shell: bash
       run: shopt -s globstar; for f in ./**/*.csproj; do dotnet publish $f --configuration ${{ env.BUILDCONFIGURATION }} --output ${{ runner.temp }} ; done
