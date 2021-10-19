@@ -1,8 +1,8 @@
 # Example, any change in this repo 
-# will require approval from @vriesmarcel
-# * @vriesmarcel
+# will require approval from @rajbos
+* @rajbos
 
 # Any change inside the `/Documents` directory
 # will require approval from anyone in the organization fluentbytes and the team docsteam
-# /Documents @fluentbytes/docsteam
+# /Documents @my-organization/docsteam
 # Create your own rules below this line without the # sign
