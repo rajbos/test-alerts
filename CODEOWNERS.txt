@@ -1,6 +1,6 @@
 # Example, any change in this repo 
 # will require approval from @rajbos
-* @rajbos
+* @jessehouwing
 
 # Any change inside the `/Documents` directory
 # will require approval from anyone in the organization fluentbytes and the team docsteam
